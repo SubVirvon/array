@@ -11,9 +11,9 @@ namespace array
         static void Main(string[] args)
         {
             int[,] array = {
-                {1, 2, 3, 4 },
-                {5, 6, 7, 8 },
-                {9, 1, 2, 3 } };
+                {1, 2, 3, 4, 5 },
+                {5, 6, 7, 8, 3 },
+                {9, 1, 2, 3, 3 } };
             int sum = 0;
             int multiplication = 1;
             int column = 0;
@@ -25,19 +25,19 @@ namespace array
                 {
                     Console.Write(array[i, j]);
                     Console.Write("|");
-
-                    if(j == column)
-                    {
-                        multiplication *= array[i, j];
-                    }
-
-                    if(i == row)
-                    {
-                        sum += array[i, j];
-                    }
                 }
 
                 Console.WriteLine();
+            }
+
+            for(int i = 0; i < array.GetLength(1); i++)
+            {
+                sum += array[row, i];
+            }
+
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                multiplication *= array[i, column];
             }
 
             Console.WriteLine("Сумма строки " + (row + 1) + ": " + sum + "\nПроизведение столбца " + (column + 1) + ": " + multiplication);
